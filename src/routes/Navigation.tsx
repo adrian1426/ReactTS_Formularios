@@ -1,5 +1,6 @@
 import { BrowserRouter, NavLink, Routes, Route, Navigate } from 'react-router-dom';
 import logo from '../logo.svg';
+import RegisterPage from '../pages/RegisterPage';
 
 const Navigation = () => {
   return (
@@ -36,7 +37,7 @@ const Navigation = () => {
         </nav>
 
         <Routes>
-          <Route path='/' element={<h1>Home</h1>} />
+          <Route path='/' element={<RegisterPage />} />
           <Route path='/about' element={<h1>About</h1>} />
           <Route path='/users' element={<h1>Users</h1>} />
 
