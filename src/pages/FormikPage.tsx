@@ -50,7 +50,10 @@ const FormikPage = () => {
           name="firstName"
           value={formik.values.firstName}
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          className={(formik.touched.firstName && formik.errors.firstName) ? 'has-error' : ''}
         />
+        {(formik.touched.firstName && formik.errors.firstName) && <span>{formik.errors.firstName}</span>}
 
         <label>Last Name</label>
         <input
@@ -58,7 +61,10 @@ const FormikPage = () => {
           name="lastName"
           value={formik.values.lastName}
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          className={(formik.touched.lastName && formik.errors.lastName) ? 'has-error' : ''}
         />
+        {(formik.touched.lastName && formik.errors.lastName) && <span>{formik.errors.lastName}</span>}
 
         <label>Email</label>
         <input
@@ -66,7 +72,10 @@ const FormikPage = () => {
           name="email"
           value={formik.values.email}
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          className={(formik.touched.email && formik.errors.email) ? 'has-error' : ''}
         />
+        {(formik.touched.email && formik.errors.email) && <span>{formik.errors.email}</span>}
 
         <button
           type="submit"
