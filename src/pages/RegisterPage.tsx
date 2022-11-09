@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useForm } from '../hooks/useForm';
 import '../styles/styles.css';
 
 const initialState = {
@@ -9,21 +9,12 @@ const initialState = {
 };
 
 const RegisterPage = () => {
-  const [registerData, setRegisterData] = useState(initialState);
-  const { name, email, password1, password2 } = registerData;
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-
-    setRegisterData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
+  const { formData, handleChange } = useForm(initialState);
+  const { name, email, password1, password2 } = formData;
 
   const handleSubmit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
-    console.log("state: ", registerData);
+    console.log("state: ", formData);
   };
 
   return (
