@@ -12,8 +12,15 @@ export const useForm = <T>(initialState: T) => {
     }));
   };
 
+  const newPropsInput = (name: string) => ({
+    name,
+    value: (formData as any)[name],
+    onChange: handleChange
+  });
+
   return {
     formData,
-    handleChange
+    handleChange,
+    newPropsInput
   };
 };

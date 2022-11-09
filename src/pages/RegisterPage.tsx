@@ -9,8 +9,7 @@ const initialState = {
 };
 
 const RegisterPage = () => {
-  const { formData, handleChange } = useForm(initialState);
-  const { name, email, password1, password2 } = formData;
+  const { formData, newPropsInput } = useForm(initialState);
 
   const handleSubmit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
@@ -24,34 +23,26 @@ const RegisterPage = () => {
       <form>
         <input
           type="text"
-          name='name'
           placeholder="name"
-          value={name}
-          onChange={handleChange}
+          {...newPropsInput('name')}
         />
 
         <input
           type="email"
-          name='email'
           placeholder="email"
-          value={email}
-          onChange={handleChange}
+          {...newPropsInput('email')}
         />
 
         <input
           type="password"
-          name='password1'
           placeholder="password"
-          value={password1}
-          onChange={handleChange}
+          {...newPropsInput('password1')}
         />
 
         <input
           type="password"
-          name='password2'
           placeholder="repeat password"
-          value={password2}
-          onChange={handleChange}
+          {...newPropsInput('password2')}
         />
 
         <button
