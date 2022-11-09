@@ -1,5 +1,11 @@
-import { useFormik } from 'formik';
+import { useFormik, FormikErrors } from 'formik';
 import '../styles/styles.css';
+
+interface FormValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
 
 const initialState = {
   firstName: '',
@@ -8,11 +14,31 @@ const initialState = {
 };
 
 const FormikPage = () => {
+
+  const validateForm = (values: FormValues) => {
+    const errorsForm: FormikErrors<FormValues> = {};
+
+    if (!values.firstName) {
+      errorsForm.firstName = 'Este campo es requerido';
+    }
+
+    if (!values.lastName) {
+      errorsForm.lastName = 'Este campo es requerido';
+    }
+
+    if (!values.email) {
+      errorsForm.email = 'Este campo es requerido';
+    }
+
+    return errorsForm;
+  };
+
   const formik = useFormik({
     initialValues: initialState,
     onSubmit: (values) => {
       console.log(values);
-    }
+    },
+    validate: (values) => validateForm(values)
   });
 
   return (
