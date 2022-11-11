@@ -1,6 +1,6 @@
 import { BrowserRouter, NavLink, Routes, Route, Navigate } from 'react-router-dom';
 import logo from '../logo.svg';
-import FormikPage from '../pages/FormikPage';
+import FormikYupPage from '../pages/FormikYupPage';
 
 const Navigation = () => {
   return (
@@ -37,7 +37,7 @@ const Navigation = () => {
         </nav>
 
         <Routes>
-          <Route path='/' element={<FormikPage />} />
+          <Route path='/' element={<FormikYupPage />} />
           <Route path='/about' element={<h1>About</h1>} />
           <Route path='/users' element={<h1>Users</h1>} />
 
