@@ -43,10 +43,7 @@ const FormikYupPage = () => {
         <label>First Name</label>
         <input
           type="text"
-          name="firstName"
-          value={formik.values.firstName}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
+          {...formik.getFieldProps('firstName')}
           className={(formik.touched.firstName && formik.errors.firstName) ? 'has-error' : ''}
         />
         {(formik.touched.firstName && formik.errors.firstName) && <span>{formik.errors.firstName}</span>}
@@ -54,10 +51,7 @@ const FormikYupPage = () => {
         <label>Last Name</label>
         <input
           type="text"
-          name="lastName"
-          value={formik.values.lastName}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
+          {...formik.getFieldProps('lastName')}
           className={(formik.touched.lastName && formik.errors.lastName) ? 'has-error' : ''}
         />
         {(formik.touched.lastName && formik.errors.lastName) && <span>{formik.errors.lastName}</span>}
@@ -65,10 +59,7 @@ const FormikYupPage = () => {
         <label>Email</label>
         <input
           type="email"
-          name="email"
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
+          {...formik.getFieldProps('email')}
           className={(formik.touched.email && formik.errors.email) ? 'has-error' : ''}
         />
         {(formik.touched.email && formik.errors.email) && <span>{formik.errors.email}</span>}
