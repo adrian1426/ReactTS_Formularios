@@ -1,4 +1,4 @@
-import { useFormik } from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import '../styles/styles.css';
 
@@ -16,60 +16,52 @@ const initialState: FormValues = {
 
 const FormikYupPage = () => {
 
-  const formik = useFormik({
-    initialValues: initialState,
-    onSubmit: (values) => {
-      console.log(values);
-    },
-    validationSchema: Yup.object({
-      firstName: Yup.string()
-        .max(15, 'Máximo 15 caracteres')
-        .required('Campo requerido'),
-      lastName: Yup.string()
-        .max(100, 'Máximo 100 caracteres')
-        .required('Campo requerido'),
-      email: Yup.string()
-        .max(50, 'Máximo 50 caracteres')
-        .email('Formato de correo no válido')
-        .required('Campo requerido')
-    })
-  });
-
   return (
     <div>
       <h1>Formik Yup</h1>
 
-      <form onSubmit={formik.handleSubmit}>
-        <label>First Name</label>
-        <input
-          type="text"
-          {...formik.getFieldProps('firstName')}
-          className={(formik.touched.firstName && formik.errors.firstName) ? 'has-error' : ''}
-        />
-        {(formik.touched.firstName && formik.errors.firstName) && <span>{formik.errors.firstName}</span>}
+      <Formik
+        initialValues={initialState}
+        onSubmit={(values) => {
+          console.log(values)
+        }}
+        validationSchema={
+          Yup.object({
+            firstName: Yup.string()
+              .max(15, 'Máximo 15 caracteres')
+              .required('Campo requerido'),
+            lastName: Yup.string()
+              .max(100, 'Máximo 100 caracteres')
+              .required('Campo requerido'),
+            email: Yup.string()
+              .max(50, 'Máximo 50 caracteres')
+              .email('Formato de correo no válido')
+              .required('Campo requerido')
+          })
+        }
+      >
+        {
+          (formik) => (
+            <Form>
+              <label>First Name</label>
+              <Field type="text" name="firstName" />
+              <ErrorMessage name="firstName" component='span' />
 
-        <label>Last Name</label>
-        <input
-          type="text"
-          {...formik.getFieldProps('lastName')}
-          className={(formik.touched.lastName && formik.errors.lastName) ? 'has-error' : ''}
-        />
-        {(formik.touched.lastName && formik.errors.lastName) && <span>{formik.errors.lastName}</span>}
+              <label>Last Name</label>
+              <Field type="text" name="lastName" />
+              <ErrorMessage name="lastName" component='span' />
 
-        <label>Email</label>
-        <input
-          type="email"
-          {...formik.getFieldProps('email')}
-          className={(formik.touched.email && formik.errors.email) ? 'has-error' : ''}
-        />
-        {(formik.touched.email && formik.errors.email) && <span>{formik.errors.email}</span>}
+              <label>Email</label>
+              <Field type="email" name="email" />
+              <ErrorMessage name="email" component='span' />
 
-        <button
-          type="submit"
-        >
-          Enviar
-        </button>
-      </form>
+              <button type="submit">
+                Enviar
+              </button>
+            </Form>
+          )
+        }
+      </Formik>
     </div>
   );
 };
