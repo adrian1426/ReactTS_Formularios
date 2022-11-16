@@ -1,5 +1,7 @@
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import Field from '../components/Field';
+import Select from '../components/Select';
 import '../styles/styles.css';
 
 interface FormValues {
@@ -49,32 +51,20 @@ const FormikYupPage = () => {
         }
       >
         {
-          (formik) => (
+          () => (
             <Form>
-              <label>First Name</label>
-              <Field type="text" name="firstName" />
-              <ErrorMessage name="firstName" component='span' />
+              <Field name='firstName'>First label</Field>
+              <Field name='lastName'>Last Name</Field>
+              <Field type="email" name='email'>Email</Field>
 
-              <label>Last Name</label>
-              <Field type="text" name="lastName" />
-              <ErrorMessage name="lastName" component='span' />
-
-              <label>Email</label>
-              <Field type="email" name="email" />
-              <ErrorMessage name="email" component='span' />
-
-              <label>Job tyep</label>
-              <Field name="jobType" as='select'>
+              <Select label='Job type' name='jobType'>
                 <option value="">--Seleccione--</option>
                 <option value="1">Dev Angular</option>
                 <option value="2">Dev React</option>
                 <option value="3"> Quick</option>
-              </Field>
-              <ErrorMessage name="jobType" component='span' />
+              </Select>
 
-              <label>Terminos y condiciones</label>
-              <Field type="checkbox" name="terms" />
-              <ErrorMessage name="terms" component='span' />
+              <Field type="checkbox" name='terms'>Terminos y condiciones</Field>
 
               <button type="submit">
                 Enviar
