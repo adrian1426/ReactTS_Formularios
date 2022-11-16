@@ -6,12 +6,16 @@ interface FormValues {
   firstName: string;
   lastName: string;
   email: string;
+  terms: boolean;
+  jobType: string;
 }
 
 const initialState: FormValues = {
   firstName: '',
   lastName: '',
-  email: ''
+  email: '',
+  terms: false,
+  jobType: ''
 };
 
 const FormikYupPage = () => {
@@ -36,7 +40,11 @@ const FormikYupPage = () => {
             email: Yup.string()
               .max(50, 'Máximo 50 caracteres')
               .email('Formato de correo no válido')
-              .required('Campo requerido')
+              .required('Campo requerido'),
+            terms: Yup.boolean()
+              .oneOf([true], 'Debe aceptar términos y condiciones'),
+            jobType: Yup.string()
+              .required('Requerido')
           })
         }
       >
@@ -54,6 +62,19 @@ const FormikYupPage = () => {
               <label>Email</label>
               <Field type="email" name="email" />
               <ErrorMessage name="email" component='span' />
+
+              <label>Job tyep</label>
+              <Field name="jobType" as='select'>
+                <option value="">--Seleccione--</option>
+                <option value="1">Dev Angular</option>
+                <option value="2">Dev React</option>
+                <option value="3"> Quick</option>
+              </Field>
+              <ErrorMessage name="jobType" component='span' />
+
+              <label>Terminos y condiciones</label>
+              <Field type="checkbox" name="terms" />
+              <ErrorMessage name="terms" component='span' />
 
               <button type="submit">
                 Enviar
