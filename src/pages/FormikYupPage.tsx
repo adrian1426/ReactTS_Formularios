@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import Field from '../components/Field';
 import Select from '../components/Select';
 import '../styles/styles.css';
+import FieldUseField from '../components/FieldUseField';
 
 interface FormValues {
   firstName: string;
@@ -53,7 +54,7 @@ const FormikYupPage = () => {
         {
           () => (
             <Form>
-              <Field name='firstName'>First label</Field>
+              <FieldUseField name="firstName" type="text">First label</FieldUseField>
               <Field name='lastName'>Last Name</Field>
               <Field type="email" name='email'>Email</Field>
 
