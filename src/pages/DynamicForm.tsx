@@ -3,16 +3,19 @@ import Field from '../components/Field';
 import formJson from '../data/form.json';
 import '../styles/styles.css';
 
+const initialValues: { [key: string]: any } = {};
+
+formJson.forEach(componentjson => {
+  initialValues[componentjson.name] = componentjson?.value;
+});
+
 const DynamicForm = () => {
   return (
     <div>
       <h1>DynamicForm</h1>
 
       <Formik
-        initialValues={{
-          firstName: '',
-          lastName: ''
-        }}
+        initialValues={initialValues}
         onSubmit={(values) => {
           console.log(values)
         }}
@@ -26,6 +29,7 @@ const DynamicForm = () => {
                     <Field
                       key={component.name}
                       name={component.name}
+                      type={component.type}
                     >
                       {component.label}
                     </Field>
