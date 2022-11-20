@@ -1,5 +1,6 @@
 import { Form, Formik } from 'formik';
 import Field from '../components/Field';
+import Select from '../components/Select';
 import formJson from '../data/form.json';
 import '../styles/styles.css';
 
@@ -25,6 +26,27 @@ const DynamicForm = () => {
             <Form>
               {
                 formJson.map(component => {
+                  if (component.type === 'select') {
+                    return (
+                      <Select
+                        key={component.name}
+                        name={component.name}
+                        label={component.label}
+                      >
+                        {component.options?.map(option => {
+                          return (
+                            <option
+                              key={option.value}
+                              value={option.value}
+                            >
+                              {option.label}
+                            </option>
+                          )
+                        })}
+                      </Select>
+                    )
+                  }
+
                   return (
                     <Field
                       key={component.name}

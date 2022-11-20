@@ -19,5 +19,33 @@
     "placeholder": "Email",
     "label": "Email",
     "value": ""
+  },
+  {
+    "type": "select",
+    "name": "languages",
+    "label": "Lenguajes",
+    "value": "",
+    "options": [
+      {
+        "type": "text",
+        "label": "--Seleccione un lenguaje--",
+        "value": ""
+      },
+      {
+        "type": "text",
+        "label": "JS",
+        "value": "js"
+      },
+      {
+        "type": "text",
+        "label": "C#",
+        "value": "Csharp"
+      },
+      {
+        "type": "text",
+        "label": "Java",
+        "value": "java"
+      }
+    ]
   }
 ]
