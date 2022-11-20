@@ -1,6 +1,6 @@
 import { BrowserRouter, NavLink, Routes, Route, Navigate } from 'react-router-dom';
 import logo from '../logo.svg';
-import RegisterPage2 from '../pages/RegisterPage2';
+import DynamicForm from '../pages/DynamicForm';
 
 const Navigation = () => {
   return (
@@ -37,7 +37,7 @@ const Navigation = () => {
         </nav>
 
         <Routes>
-          <Route path='/' element={<RegisterPage2 />} />
+          <Route path='/' element={<DynamicForm />} />
           <Route path='/about' element={<h1>About</h1>} />
           <Route path='/users' element={<h1>Users</h1>} />
 
