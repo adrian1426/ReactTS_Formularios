@@ -18,6 +18,10 @@ formJson.forEach(componentjson => {
       if (validation.type === 'required') {
         schema = schema.required('Este campo es requerido');
       }
+
+      if (validation.type === 'minlength') {
+        schema = schema.min((validation as any).length, `La longitud minima debe ser de ${(validation as any).length}`)
+      }
     });
 
     requiredField[componentjson.name] = schema;

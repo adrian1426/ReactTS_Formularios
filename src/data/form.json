@@ -8,6 +8,10 @@
     "validations": [
       {
         "type": "required"
+      },
+      {
+        "type": "minlength",
+        "length": "3"
       }
     ]
   },
